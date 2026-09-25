@@ -1,0 +1,30 @@
+# Settings for the rainfall-to-TOC program (GETTING_STARTED.md section 5), for the Denver Water data.
+# Layout follows the design doc's section 8.5; the program's own config.yaml was not available to
+# check against. If a key differs, copy the two TODO values (toc_point, velocity) into the program's file.
+data:
+  rainfall_csv: data/rainfall.csv   # date, one column per gauge, daily inches
+  gauges_csv: data/gauges.csv       # gauge_id, lat, lon
+  toc_csv: data/toc.csv             # date, toc_mg_per_L
+  date_col: date
+  toc_col: toc_mg_per_L
+  toc_point:                        # Conduit 26 intake at Strontia Springs Dam, where Foothills draws its water
+    lat: 39.431939
+    lon: -105.126546
+travel_time:
+  velocity_ft_per_s: 2.0            # guide's default when unknown; the scan tests 0.5 to 5
+  fractional_lag: false
+features:
+  windows: [1D, 3D, 7D, 14D]
+  include_same_day: true
+  include_antecedent_dry_days: true
+  lag_band_features: false
+  target_transform: none
+model:
+  type: ols
+  cv_folds: 5
+  test_fraction: 0.2
+lag_scan:
+  enabled: true
+  velocity_range_ft_per_s: [0.5, 5.0]
+  velocity_step: 0.25
+output_dir: outputs/
