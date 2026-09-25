@@ -1,5 +1,7 @@
 .DS_Store
 
+~*.*
+
 # Private working material. Kept locally and in git history, not on the public tip.
 experiments/
 exploration-notes.md
@@ -13,3 +15,7 @@ strontia-brief/vendor/
 ExploreDDD_Materials/
 ExploreDDD_Materials.zip
 ExploreDDD_Materials_Update.zip
+
+# Local secrets
+.env
+.venv/
